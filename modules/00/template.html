@@ -22,13 +22,49 @@
 
 
 <script type=module>
-import { Console as CLI } from "endap"
+import { Console as CLI } from "endap";
+import { RandNum as RNU } from "endap";
+
 const consoles = CLI.create("40px");
 
 const cnt = document.getElementById("cnt1");
 cnt.append(consoles.el);
 
-consoles.ver();
+const min = 10;
+const max = 90;
+const n = 10;
+const x = RNU.randIntN(min, max, n);
+
+consoles.log("x = ", "");
+consoles.log(x);
+const y = [...x];
+
+for (let i = 0; i < y.length; i++) {
+  for (let j = i + 1; j < y.length; j++) {
+    if (y[i] > y[j]) {
+      const temp = y[i];
+      y[i] = y[j];
+      y[j] = temp;
+    }
+  }
+}
+
+consoles.log("Angka setelah sorting = ", "");
+consoles.log(y);
+console.log();
+
+for (let i = 0; i < n; i++) {
+  for (let j = i + 1; j < n; j++) {
+    if (x[i] > x[j]) {
+      let tmp = x[i];
+      x[i] = x[j];
+      x[j] = tmp;
+    }
+  }
+}
+
+consoles.log("x = ", "");
+consoles.log(x);
 </script>
 
 
